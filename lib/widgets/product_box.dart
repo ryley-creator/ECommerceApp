@@ -4,19 +4,19 @@ class ProductBox extends StatelessWidget {
   const ProductBox({
     super.key,
     required this.description,
-    required this.image,
+    required this.imageUrl,
     required this.name,
     required this.price,
   });
   final String name;
   final String description;
   final double price;
-  final Image image;
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 165,
+      height: 305,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(15),
@@ -32,7 +32,15 @@ class ProductBox extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ClipRRect(borderRadius: BorderRadius.circular(15), child: image),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(15),
+            child: Image.network(
+              imageUrl,
+              height: 180,
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
             child: Column(

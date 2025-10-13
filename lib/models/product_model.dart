@@ -8,8 +8,10 @@ class ProductModel {
   final String imageUrl;
   final String category;
   final DateTime createdAt;
+  final String detailedInfo;
 
   ProductModel({
+    required this.detailedInfo,
     required this.category,
     required this.createdAt,
     required this.description,
@@ -21,6 +23,7 @@ class ProductModel {
 
   factory ProductModel.fromMap(Map<String, dynamic> data, String id) =>
       ProductModel(
+        detailedInfo: data['productDetails'] ?? '',
         category: data['category'] ?? '',
         createdAt: (data['createdAt'] as Timestamp).toDate(),
         description: data['description'] ?? '',

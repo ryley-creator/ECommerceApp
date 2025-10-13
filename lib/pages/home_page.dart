@@ -7,6 +7,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -18,7 +19,7 @@ class HomePage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           leading: Icon(Icons.menu),
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.transparent,
           title: SvgPicture.asset('assets/icons/stylish_home_page.svg'),
           actions: [
             Padding(
@@ -50,12 +51,53 @@ class HomePage extends StatelessWidget {
                     Expanded(
                       child: ListView.builder(
                         itemCount: state.products.length,
-                        itemBuilder: (context, index) => ProductBox(
-                          description: state.products[index].description,
-                          image: Image.network(state.products[index].imageUrl),
-                          name: state.products[index].name,
-                          price: state.products[index].price,
-                        ),
+                        itemBuilder: (context, index) {
+                          final firstIndex = index * 2;
+                          final secondIndex = firstIndex + 1;
+                          if (firstIndex >= state.products.length)
+                            return SizedBox();
+                          final firstProduct = state.products[firstIndex];
+                          final secondProduct =
+                              secondIndex < state.products.length
+                              ? state.products[secondIndex]
+                              : null;
+                          return Padding(
+                            padding: const EdgeInsets.only(bottom: 12),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Expanded(
+                                  child: GestureDetector(
+                                    onTap: () => context.push('/details_page'),
+                                    child: ProductBox(
+                                      description: firstProduct.description,
+                                      imageUrl: state.products[index].imageUrl,
+                                      name: firstProduct.name,
+                                      price: firstProduct.price,
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(width: 12),
+                                Expanded(
+                                  child: secondProduct != null
+                                      ? GestureDetector(
+                                          onTap: () =>
+                                              context.push('/details_page'),
+                                          child: ProductBox(
+                                            description:
+                                                secondProduct.description,
+                                            imageUrl:
+                                                state.products[index].imageUrl,
+                                            name: secondProduct.name,
+                                            price: secondProduct.price,
+                                          ),
+                                        )
+                                      : const SizedBox(),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
                       ),
                     ),
                   ],

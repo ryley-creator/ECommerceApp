@@ -1,5 +1,5 @@
 // ignore_for_file: unnecessary_string_interpolations, must_be_immutable
-import 'package:ecommerce/bloc/product_bloc.dart';
+import 'package:ecommerce/bloc/product/product_bloc.dart';
 import 'package:ecommerce/pages/detailed_info_page.dart';
 import 'package:ecommerce/widgets/product_box.dart';
 import 'package:ecommerce/widgets/search_field.dart';

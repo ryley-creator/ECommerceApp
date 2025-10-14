@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class ProductBox extends StatelessWidget {
   const ProductBox({
     super.key,
+    required this.id,
     required this.description,
     required this.imageUrl,
     required this.name,
@@ -12,6 +13,7 @@ class ProductBox extends StatelessWidget {
   final String description;
   final double price;
   final String imageUrl;
+  final String id;
 
   @override
   Widget build(BuildContext context) {
@@ -32,13 +34,16 @@ class ProductBox extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(15),
-            child: Image.network(
-              imageUrl,
-              height: 180,
-              width: double.infinity,
-              fit: BoxFit.cover,
+          Hero(
+            tag: id,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(15),
+              child: Image.network(
+                imageUrl,
+                height: 180,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           Padding(

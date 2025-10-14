@@ -1,5 +1,4 @@
 // ignore_for_file: unnecessary_string_interpolations, must_be_immutable
-
 import 'package:ecommerce/bloc/product_bloc.dart';
 import 'package:ecommerce/pages/detailed_info_page.dart';
 import 'package:ecommerce/widgets/product_box.dart';
@@ -8,7 +7,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -78,6 +76,7 @@ class HomePage extends StatelessWidget {
                                       ),
                                     ),
                                     child: ProductBox(
+                                      id: state.products[firstIndex].id,
                                       description: firstProduct.description,
                                       imageUrl: state.products[index].imageUrl,
                                       name: firstProduct.name,
@@ -100,6 +99,7 @@ class HomePage extends StatelessWidget {
                                             ),
                                           ),
                                           child: ProductBox(
+                                            id: state.products[secondIndex].id,
                                             description:
                                                 secondProduct.description,
                                             imageUrl:

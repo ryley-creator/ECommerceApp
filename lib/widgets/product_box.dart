@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ProductBox extends StatelessWidget {
+class ProductBox extends StatefulWidget {
   const ProductBox({
     super.key,
     required this.id,
@@ -15,6 +15,12 @@ class ProductBox extends StatelessWidget {
   final String imageUrl;
   final String id;
 
+  @override
+  State<ProductBox> createState() => _ProductBoxState();
+}
+
+class _ProductBoxState extends State<ProductBox> {
+  bool isFavorite = false;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,11 +41,11 @@ class ProductBox extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Hero(
-            tag: id,
+            tag: widget.id,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(15),
               child: Image.network(
-                imageUrl,
+                widget.imageUrl,
                 height: 180,
                 width: double.infinity,
                 fit: BoxFit.cover,
@@ -47,13 +53,13 @@ class ProductBox extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  name,
+                  widget.name,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
@@ -61,14 +67,30 @@ class ProductBox extends StatelessWidget {
                 SizedBox(height: 4),
                 Text(
                   maxLines: 2,
-                  description,
+                  widget.description,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(fontSize: 12),
                 ),
-                SizedBox(height: 4),
-                Text(
-                  '\$${price}',
-                  style: TextStyle(fontWeight: FontWeight.w500),
+                SizedBox(height: 3),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      '\$${widget.price}',
+                      style: TextStyle(fontWeight: FontWeight.w500),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() => isFavorite = !isFavorite);
+                      },
+                      child: Icon(
+                        isFavorite
+                            ? Icons.favorite
+                            : Icons.favorite_border_outlined,
+                        color: isFavorite ? Colors.red : Colors.black,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

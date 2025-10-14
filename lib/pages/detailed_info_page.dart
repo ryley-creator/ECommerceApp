@@ -105,12 +105,15 @@ class _DetailedInfoPageState extends State<DetailedInfoPage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     CartButton(
-                      icon: const Icon(Icons.bar_chart, color: Colors.white),
+                      icon: const Icon(Icons.backpack, color: Colors.white),
                       text: 'Go to cart',
                       color: Colors.blue,
                     ),
                     CartButton(
-                      icon: const Icon(Icons.fingerprint, color: Colors.white),
+                      icon: const Icon(
+                        Icons.attach_money_rounded,
+                        color: Colors.white,
+                      ),
                       text: 'Buy now',
                       color: Colors.green,
                     ),

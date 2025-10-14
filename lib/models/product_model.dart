@@ -9,6 +9,7 @@ class ProductModel {
   final String category;
   final DateTime createdAt;
   final String detailedInfo;
+  final bool isFavorite;
 
   ProductModel({
     required this.detailedInfo,
@@ -19,10 +20,12 @@ class ProductModel {
     required this.imageUrl,
     required this.name,
     required this.price,
+    required this.isFavorite,
   });
 
   factory ProductModel.fromMap(Map<String, dynamic> data, String id) =>
       ProductModel(
+        isFavorite: data['isFavorite'],
         detailedInfo: data['productDetails'] ?? '',
         category: data['category'] ?? '',
         createdAt: (data['createdAt'] as Timestamp).toDate(),

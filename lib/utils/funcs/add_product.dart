@@ -4,6 +4,7 @@ Future<void> addProduct() async {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   try {
     await firestore.collection('product').add({
+      'isFavorite': false,
       'name': 'Nike Air Jordan',
       'description': 'The best sneakers that you have ever dressed',
       'price': 1199.9,

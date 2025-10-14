@@ -36,7 +36,7 @@ class _MyWidgetState extends State<SplashScreen> {
 
     if (user != null) {
       if (mounted) {
-        context.go('/home_page');
+        context.go('/main_page');
       } else {
         if (mounted) {
           context.go('/login_page');

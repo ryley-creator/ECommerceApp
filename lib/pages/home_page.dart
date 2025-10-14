@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           leading: Icon(Icons.menu),
-          backgroundColor: Colors.transparent,
+          backgroundColor: Colors.white60,
           title: SvgPicture.asset('assets/icons/stylish_home_page.svg'),
           actions: [
             Padding(
@@ -46,7 +46,7 @@ class HomePage extends StatelessWidget {
                   children: [
                     SizedBox(height: 8),
                     SearchField(),
-                    SizedBox(height: 16),
+                    SizedBox(height: 5),
                     Expanded(
                       child: ListView.builder(
                         itemCount: state.products.length,
@@ -61,7 +61,7 @@ class HomePage extends StatelessWidget {
                               ? state.products[secondIndex]
                               : null;
                           return Padding(
-                            padding: const EdgeInsets.only(bottom: 12),
+                            padding: const EdgeInsets.only(bottom: 12, top: 12),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [

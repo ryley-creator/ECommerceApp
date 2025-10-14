@@ -1,6 +1,7 @@
 // ignore_for_file: unnecessary_string_interpolations, must_be_immutable
 
 import 'package:ecommerce/bloc/product_bloc.dart';
+import 'package:ecommerce/pages/detailed_info_page.dart';
 import 'package:ecommerce/widgets/product_box.dart';
 import 'package:ecommerce/widgets/search_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -68,7 +69,14 @@ class HomePage extends StatelessWidget {
                               children: [
                                 Expanded(
                                   child: GestureDetector(
-                                    onTap: () => context.push('/details_page'),
+                                    onTap: () => Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => DetailedInfoPage(
+                                          product: state.products[firstIndex],
+                                        ),
+                                      ),
+                                    ),
                                     child: ProductBox(
                                       description: firstProduct.description,
                                       imageUrl: state.products[index].imageUrl,
@@ -81,8 +89,16 @@ class HomePage extends StatelessWidget {
                                 Expanded(
                                   child: secondProduct != null
                                       ? GestureDetector(
-                                          onTap: () =>
-                                              context.push('/details_page'),
+                                          onTap: () => Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  DetailedInfoPage(
+                                                    product: state
+                                                        .products[secondIndex],
+                                                  ),
+                                            ),
+                                          ),
                                           child: ProductBox(
                                             description:
                                                 secondProduct.description,

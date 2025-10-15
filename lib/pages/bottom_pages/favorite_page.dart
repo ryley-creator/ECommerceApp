@@ -1,4 +1,5 @@
 import 'package:ecommerce/bloc/favorite/favorite_bloc.dart';
+import 'package:ecommerce/pages/detailed_info_page.dart';
 import 'package:ecommerce/widgets/product_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -45,11 +46,33 @@ class WishlistPage extends StatelessWidget {
                   ),
                   child: Row(
                     children: [
-                      Expanded(child: ProductBox(product: firstProduct)),
+                      Expanded(
+                        child: GestureDetector(
+                          onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => DetailedInfoPage(
+                                product: state.favorites[firstIndex],
+                              ),
+                            ),
+                          ),
+                          child: ProductBox(product: firstProduct),
+                        ),
+                      ),
                       SizedBox(width: 15),
                       Expanded(
                         child: secondProduct != null
-                            ? ProductBox(product: secondProduct)
+                            ? GestureDetector(
+                                onTap: () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => DetailedInfoPage(
+                                      product: state.favorites[secondIndex],
+                                    ),
+                                  ),
+                                ),
+                                child: ProductBox(product: secondProduct),
+                              )
                             : SizedBox(),
                       ),
                     ],

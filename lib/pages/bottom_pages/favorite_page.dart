@@ -12,6 +12,8 @@ class WishlistPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        scrolledUnderElevation: 0,
+        surfaceTintColor: Colors.transparent,
         title: Text('Favorites', style: TextStyle(fontWeight: FontWeight.w700)),
         backgroundColor: Colors.transparent,
       ),

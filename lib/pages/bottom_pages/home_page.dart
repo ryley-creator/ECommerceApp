@@ -17,6 +17,8 @@ class HomePage extends StatelessWidget {
       create: (context) => ProductBloc()..add(LoadProducts()),
       child: Scaffold(
         appBar: AppBar(
+          scrolledUnderElevation: 0,
+          surfaceTintColor: Colors.transparent,
           leading: Icon(Icons.menu),
           backgroundColor: Colors.white60,
           title: SvgPicture.asset('assets/icons/stylish_home_page.svg'),

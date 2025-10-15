@@ -1,4 +1,5 @@
 import 'package:ecommerce/pages/auth/forgot_password.dart';
+import 'package:ecommerce/pages/detailed_info_page.dart';
 import 'package:ecommerce/pages/main_page.dart';
 import 'package:ecommerce/pages/pages.dart';
 import 'package:go_router/go_router.dart';

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecommerce/bloc/cart/cart_bloc.dart';
 import 'package:ecommerce/bloc/favorite/favorite_bloc.dart';
 import 'package:ecommerce/bloc/product/product_bloc.dart';
 import 'package:ecommerce/utils/router/app_router.dart';
@@ -18,6 +19,9 @@ void main() async {
         BlocProvider(
           create: (_) =>
               FavoriteBloc(firestore: firestore)..add(LoadFavorites()),
+        ),
+        BlocProvider(
+          create: (_) => CartBloc(firestore: firestore)..add(LoadCart()),
         ),
       ],
       child: MyApp(),

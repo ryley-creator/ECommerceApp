@@ -1,14 +1,28 @@
-import 'package:ecommerce/utils/funcs/add_product.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ecommerce/bloc/favorite/favorite_bloc.dart';
+import 'package:ecommerce/bloc/product/product_bloc.dart';
 import 'package:ecommerce/utils/router/app_router.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  await addProduct();
-  runApp(MyApp());
+  final firestore = FirebaseFirestore.instance;
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => ProductBloc()..add(LoadProducts())),
+        BlocProvider(
+          create: (_) =>
+              FavoriteBloc(firestore: firestore)..add(LoadFavorites()),
+        ),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 GoogleAuthProvider googleAuthProvider = GoogleAuthProvider();

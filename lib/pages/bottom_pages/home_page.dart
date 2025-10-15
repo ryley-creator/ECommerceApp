@@ -53,8 +53,9 @@ class HomePage extends StatelessWidget {
                         itemBuilder: (context, index) {
                           final firstIndex = index * 2;
                           final secondIndex = firstIndex + 1;
-                          if (firstIndex >= state.products.length)
+                          if (firstIndex >= state.products.length) {
                             return SizedBox();
+                          }
                           final firstProduct = state.products[firstIndex];
                           final secondProduct =
                               secondIndex < state.products.length
@@ -75,16 +76,10 @@ class HomePage extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    child: ProductBox(
-                                      id: state.products[firstIndex].id,
-                                      description: firstProduct.description,
-                                      imageUrl: state.products[index].imageUrl,
-                                      name: firstProduct.name,
-                                      price: firstProduct.price,
-                                    ),
+                                    child: ProductBox(product: firstProduct),
                                   ),
                                 ),
-                                SizedBox(width: 12),
+                                SizedBox(width: 15),
                                 Expanded(
                                   child: secondProduct != null
                                       ? GestureDetector(
@@ -99,13 +94,7 @@ class HomePage extends StatelessWidget {
                                             ),
                                           ),
                                           child: ProductBox(
-                                            id: state.products[secondIndex].id,
-                                            description:
-                                                secondProduct.description,
-                                            imageUrl:
-                                                state.products[index].imageUrl,
-                                            name: secondProduct.name,
-                                            price: secondProduct.price,
+                                            product: secondProduct,
                                           ),
                                         )
                                       : const SizedBox(),

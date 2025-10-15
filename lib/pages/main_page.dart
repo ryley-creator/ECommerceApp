@@ -1,8 +1,5 @@
-import 'package:ecommerce/pages/cart_page.dart';
-import 'package:ecommerce/pages/pages.dart';
-import 'package:ecommerce/pages/search_page.dart';
-import 'package:ecommerce/pages/settings_page.dart';
-import 'package:ecommerce/pages/wishlist_page.dart';
+import 'package:ecommerce/pages/bottom_pages/pages.dart';
+import 'package:ecommerce/pages/bottom_pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 class MainPage extends StatefulWidget {
@@ -17,9 +14,9 @@ class _MainPageState extends State<MainPage> {
   final List<Widget> pages = [
     HomePage(),
     WishlistPage(),
-    SettingsPage(),
     CartPage(),
     SearchPage(),
+    SettingsPage(),
   ];
   @override
   Widget build(BuildContext context) {

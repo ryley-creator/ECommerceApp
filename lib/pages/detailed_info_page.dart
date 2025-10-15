@@ -29,14 +29,11 @@ class _DetailedInfoPageState extends State<DetailedInfoPage> {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(20),
-                child: Hero(
-                  tag: product.id,
-                  child: Image.network(
-                    product.imageUrl,
-                    height: 290,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
-                  ),
+                child: Image.network(
+                  product.imageUrl,
+                  height: 290,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
                 ),
               ),
               const SizedBox(height: 20),

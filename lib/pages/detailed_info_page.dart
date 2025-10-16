@@ -1,7 +1,7 @@
 // ignore_for_file: sort_child_properties_last, prefer_interpolation_to_compose_strings
 import 'package:ecommerce/bloc/cart/cart_bloc.dart';
 import 'package:ecommerce/models/product_model.dart';
-import 'package:ecommerce/widgets/cart_button.dart';
+import 'package:ecommerce/widgets/cart/cart_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

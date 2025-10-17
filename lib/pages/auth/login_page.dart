@@ -1,7 +1,7 @@
 import 'package:ecommerce/utils/funcs/auth.dart';
-import 'package:ecommerce/widgets/continue_with.dart';
-import 'package:ecommerce/widgets/login_container.dart';
-import 'package:ecommerce/widgets/textfield.dart';
+import 'package:ecommerce/widgets/login/continue_with.dart';
+import 'package:ecommerce/widgets/login/login_container.dart';
+import 'package:ecommerce/widgets/login/textfield.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';

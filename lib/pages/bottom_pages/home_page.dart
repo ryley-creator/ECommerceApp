@@ -1,12 +1,13 @@
 // ignore_for_file: unnecessary_string_interpolations, must_be_immutable
 import 'package:ecommerce/bloc/product/product_bloc.dart';
 import 'package:ecommerce/pages/detailed_info_page.dart';
-import 'package:ecommerce/widgets/product_box.dart';
-import 'package:ecommerce/widgets/search_field.dart';
+import 'package:ecommerce/widgets/product/product_box.dart';
+import 'package:ecommerce/widgets/product/search_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -23,16 +24,19 @@ class HomePage extends StatelessWidget {
           backgroundColor: Colors.white60,
           title: SvgPicture.asset('assets/icons/stylish_home_page.svg'),
           actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 12.0),
-              child: auth.currentUser!.photoURL != null
-                  ? CircleAvatar(
-                      backgroundImage: NetworkImage(
-                        auth.currentUser!.photoURL!,
-                      ),
-                      radius: 18,
-                    )
-                  : const CircleAvatar(child: Icon(Icons.person), radius: 18),
+            GestureDetector(
+              onTap: () => context.push('/user_details_page'),
+              child: Padding(
+                padding: const EdgeInsets.only(right: 12.0),
+                child: auth.currentUser!.photoURL != null
+                    ? CircleAvatar(
+                        backgroundImage: NetworkImage(
+                          auth.currentUser!.photoURL!,
+                        ),
+                        radius: 18,
+                      )
+                    : CircleAvatar(radius: 18, child: Icon(Icons.person)),
+              ),
             ),
           ],
         ),

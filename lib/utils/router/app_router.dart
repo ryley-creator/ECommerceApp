@@ -1,6 +1,7 @@
 import 'package:ecommerce/pages/auth/forgot_password.dart';
 import 'package:ecommerce/pages/main_page.dart';
 import 'package:ecommerce/pages/pages.dart';
+import 'package:ecommerce/pages/user_details_page.dart';
 import 'package:go_router/go_router.dart';
 
 final router = GoRouter(
@@ -33,5 +34,9 @@ final router = GoRouter(
       builder: (context, state) => ForgotPassword(),
     ),
     GoRoute(path: '/main_page', builder: (context, state) => MainPage()),
+    GoRoute(
+      path: '/user_details_page',
+      builder: (context, state) => UserDetailsPage(),
+    ),
   ],
 );

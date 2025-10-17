@@ -1,6 +1,6 @@
 import 'package:ecommerce/bloc/favorite/favorite_bloc.dart';
 import 'package:ecommerce/pages/detailed_info_page.dart';
-import 'package:ecommerce/widgets/product_box.dart';
+import 'package:ecommerce/widgets/product/product_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

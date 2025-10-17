@@ -13,12 +13,6 @@ class DetailedInfoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CartBloc, CartState>(
       builder: (context, state) {
-        final updatedProduct = (state is CartLoaded)
-            ? state.products.firstWhere(
-                (p) => p.id == product.id,
-                orElse: () => product,
-              )
-            : product;
         return Scaffold(
           appBar: AppBar(backgroundColor: Colors.white),
           backgroundColor: Colors.white,
@@ -31,7 +25,7 @@ class DetailedInfoPage extends StatelessWidget {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(20),
                     child: Image.network(
-                      updatedProduct.imageUrl,
+                      product.imageUrl,
                       height: 290,
                       width: double.infinity,
                       fit: BoxFit.cover,
@@ -39,7 +33,7 @@ class DetailedInfoPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   Text(
-                    updatedProduct.name,
+                    product.name,
                     style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
@@ -51,7 +45,7 @@ class DetailedInfoPage extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        '\$${updatedProduct.price}',
+                        '\$${product.price}',
                         style: const TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 18,
@@ -59,7 +53,7 @@ class DetailedInfoPage extends StatelessWidget {
                       ),
                       const SizedBox(width: 20),
                       Text(
-                        '\$${updatedProduct.price + 100}',
+                        '\$${product.price + 100}',
                         style: const TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 18,
@@ -81,8 +75,8 @@ class DetailedInfoPage extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        updatedProduct.amount > 0
-                            ? 'Product amount: ${updatedProduct.amount}'
+                        product.amount > 0
+                            ? 'Product amount: ${product.amount}'
                             : 'No products left',
                         style: TextStyle(
                           fontWeight: FontWeight.w500,
@@ -94,7 +88,7 @@ class DetailedInfoPage extends StatelessWidget {
                   ),
                   SizedBox(height: 8),
                   Text(
-                    updatedProduct.detailedInfo,
+                    product.detailedInfo,
                     maxLines: 6,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -109,16 +103,14 @@ class DetailedInfoPage extends StatelessWidget {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            context.read<CartBloc>().add(
-                              AddToCart(updatedProduct),
-                            );
+                            context.read<CartBloc>().add(AddToCart(product));
                           },
                           child: CartButton(
                             icon: const Icon(
                               Icons.add_shopping_cart,
                               color: Colors.white,
                             ),
-                            text: 'Go to cart',
+                            text: 'Add to cart',
                             color: Colors.blue,
                           ),
                         ),

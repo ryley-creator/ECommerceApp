@@ -20,6 +20,14 @@ class CartPage extends StatelessWidget {
           if (state is CartLoading) {
             return Center(child: CircularProgressIndicator());
           } else if (state is CartLoaded) {
+            if (state.cart.isEmpty) {
+              return Center(
+                child: Text(
+                  'Nothing in cart yet...',
+                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
+                ),
+              );
+            }
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Column(
@@ -27,10 +35,10 @@ class CartPage extends StatelessWidget {
                   SizedBox(height: 10),
                   Expanded(
                     child: ListView.builder(
-                      itemCount: state.products.length,
+                      itemCount: state.cart.length,
                       itemBuilder: (context, index) => Column(
                         children: [
-                          CartProductBox(product: state.products[index]),
+                          CartProductBox(cartItem: state.cart[index]),
                           SizedBox(height: 10),
                         ],
                       ),

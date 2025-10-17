@@ -1,5 +1,6 @@
 import 'package:ecommerce/bloc/cart/cart_bloc.dart';
 import 'package:ecommerce/widgets/cart/cart_product_box.dart';
+import 'package:ecommerce/widgets/cart/paymet_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -45,6 +46,7 @@ class CartPage extends StatelessWidget {
                       ),
                     ),
                   ),
+                  PaymetButton(cart: state.cart),
                 ],
               ),
             );

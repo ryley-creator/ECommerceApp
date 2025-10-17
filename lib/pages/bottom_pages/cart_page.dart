@@ -47,6 +47,7 @@ class CartPage extends StatelessWidget {
                     ),
                   ),
                   PaymetButton(cart: state.cart),
+                  SizedBox(height: 10),
                 ],
               ),
             );

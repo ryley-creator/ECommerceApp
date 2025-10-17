@@ -1,6 +1,7 @@
 // ignore_for_file: sort_child_properties_last, prefer_interpolation_to_compose_strings
 import 'package:ecommerce/bloc/cart/cart_bloc.dart';
 import 'package:ecommerce/models/product_model.dart';
+import 'package:ecommerce/pages/main_page.dart';
 import 'package:ecommerce/widgets/cart/cart_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -74,16 +75,6 @@ class DetailedInfoPage extends StatelessWidget {
                           fontSize: 16,
                         ),
                       ),
-                      Text(
-                        product.amount > 0
-                            ? 'Product amount: ${product.amount}'
-                            : 'No products left',
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16,
-                          color: Colors.blue,
-                        ),
-                      ),
                     ],
                   ),
                   SizedBox(height: 8),
@@ -104,13 +95,19 @@ class DetailedInfoPage extends StatelessWidget {
                         GestureDetector(
                           onTap: () {
                             context.read<CartBloc>().add(AddToCart(product));
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MainPage(currentIndex: 2),
+                              ),
+                            );
                           },
                           child: CartButton(
                             icon: const Icon(
                               Icons.add_shopping_cart,
                               color: Colors.white,
                             ),
-                            text: 'Add to cart',
+                            text: 'Go to cart',
                             color: Colors.blue,
                           ),
                         ),

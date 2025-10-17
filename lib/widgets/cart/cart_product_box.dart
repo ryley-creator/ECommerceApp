@@ -83,7 +83,7 @@ class CartProductBox extends StatelessWidget {
                 style: TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
               ),
               Text(
-                '\$${cartItem.amount * cartItem.product.price.roundToDouble()}',
+                '\$${(cartItem.amount * cartItem.product.price).toStringAsFixed(1)}',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
             ],

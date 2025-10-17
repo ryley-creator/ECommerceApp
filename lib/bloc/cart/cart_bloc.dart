@@ -38,7 +38,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       for (var doc in snapshot.docs) {
         final productDoc = await firestore
             .collection('product')
-            .doc(doc['id'])
+            .doc(doc.id)
             .get();
         final product = ProductModel.fromMap(productDoc.data()!, productDoc.id);
         cartItems.add(CartModel.fromMap(doc.data(), product));

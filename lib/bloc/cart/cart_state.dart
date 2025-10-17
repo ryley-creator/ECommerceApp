@@ -14,7 +14,7 @@ class CartLoaded extends CartState {
   const CartLoaded(this.products);
 
   double get totalPrice =>
-      products.fold(0, (sum, item) => sum + item.price * item.amount);
+      products.fold(0, (sumItem, item) => sumItem + item.price * item.amount);
   @override
   List<Object> get props => [products];
 }

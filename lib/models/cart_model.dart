@@ -2,33 +2,20 @@ import 'package:ecommerce/models/product_model.dart';
 
 class CartModel {
   final ProductModel product;
-  final String id;
-  final int quantity;
+  final int amount;
 
-  const CartModel({
-    required this.id,
-    required this.product,
-    required this.quantity,
-  });
+  CartModel({required this.amount, required this.product});
 
-  factory CartModel.fromMap(Map<String, dynamic> data, String id) => CartModel(
-    id: id,
-    product: ProductModel.fromMap(data['product'], data['id']),
-    quantity: data['quantity'],
-  );
+  CartModel copyWith({ProductModel? product, int? amount}) {
+    return CartModel(
+      amount: amount ?? this.amount,
+      product: product ?? this.product,
+    );
+  }
 
-  Map<String, dynamic> toMap() => {
-    'id': product.id,
-    'product': {
-      'name': product.name,
-      'description': product.description,
-      'price': product.price,
-      'imageUrl': product.imageUrl,
-      'category': product.category,
-      'detailedInfo': product.detailedInfo,
-      'amount': product.amount,
-      'isFavorite': product.isFavorite,
-    },
-    'quantity': quantity,
-  };
+  Map<String, dynamic> toMap() => {'id': product.id, 'amount': amount};
+
+  factory CartModel.fromMap(Map<String, dynamic> data, ProductModel product) {
+    return CartModel(amount: data['amount'], product: product);
+  }
 }

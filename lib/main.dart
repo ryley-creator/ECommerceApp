@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce/bloc/cart/cart_bloc.dart';
 import 'package:ecommerce/bloc/favorite/favorite_bloc.dart';
 import 'package:ecommerce/bloc/product/product_bloc.dart';
-import 'package:ecommerce/utils/funcs/add_product.dart';
 import 'package:ecommerce/utils/router/app_router.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';

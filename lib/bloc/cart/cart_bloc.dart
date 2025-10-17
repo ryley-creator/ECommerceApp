@@ -15,7 +15,6 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     on<DecreaseAmount>(onDecreaseAmount);
     on<IncreaseAmount>(onIncreaseAmount);
   }
-
   Future<void> onLoadCart(LoadCart event, Emitter<CartState> emit) async {
     emit(CartLoading());
     try {
@@ -35,22 +34,17 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       final existingProductIndex = currentState.products.indexWhere(
         (item) => item.id == event.product.id,
       );
-
       List<ProductModel> updatedCart = List.from(currentState.products);
-
       if (existingProductIndex != -1) {
         final existingProduct = updatedCart[existingProductIndex];
         final newAmount = existingProduct.amount - 1;
-
         updatedCart[existingProductIndex] = existingProduct.copyWith(
           amount: newAmount,
         );
-
         await firestore.collection('product').doc(event.product.id).update({
           'amount': newAmount,
         });
       }
-
       emit(CartLoaded(updatedCart));
     }
   }
